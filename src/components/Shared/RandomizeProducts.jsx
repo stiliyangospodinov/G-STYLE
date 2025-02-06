@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ProductCard from "../Cards/ProductCard/ProductCard";
 
 export default function RandomizeProducts ({randomProducts}) {
     return (
@@ -15,16 +16,13 @@ export default function RandomizeProducts ({randomProducts}) {
             {randomProducts.map((product, index) => (
               <div key={product.id} className={`item ${index === 0 ? "active" : ""}`}>
                 <ul className="thumbnails listing-products">
-                  <li className="span3">
-                    <div className="product-box">
-                      <img alt="" src={`/${product.photoURL}`}/>
-                      <br />
-                      <Link to={`/product/${product.name}`} className="title">{product.name}</Link>
-                      <br />
-                      <a href="#" className="category">{product.category}</a>
-                      <p className="price">${product.price}</p>
-                    </div>
-                  </li>
+                <ProductCard
+                  key={product.id}
+                  name={product.name}
+                  photoURL={`/${product.photoURL}`}
+                  category={product.category}
+                  price={product.price}
+                />
                 </ul>
               </div>
             ))}

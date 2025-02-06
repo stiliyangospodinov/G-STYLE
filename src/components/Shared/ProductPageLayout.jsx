@@ -1,6 +1,7 @@
 import usePagination from "../../hooks/usePagination";
 import useProducts from "../../hooks/useProduct";
 import ProductCard from "../Cards/ProductCard/ProductCard";
+import BestProducts from "./BestProducts";
 import CategoriesAndBrands from "./CategoriesAndBrands";
 import PageBanner from "./PageBanner";
 import Pagination from "./Pagination";
@@ -46,6 +47,7 @@ export default function ProductPageLayout({ pageTitle, fetchFunction }) {
               handleResetFilter={handleResetFilter}
             />
             <RandomizeProducts randomProducts={randomProducts} />
+            <BestProducts/>
           </div>
         </div>
       </section>

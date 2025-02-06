@@ -12,9 +12,9 @@ export default function ProductCard({ id, name, photoURL, category, price }) {
           {name}
         </Link>
         <br />
-        <a href="#" className="category">
+        <Link to={`/product/${encodeURIComponent(name)}`}>
           {category}
-        </a>
+        </Link>
         <p className="price">{price} lv</p>
       </div>
     </li>

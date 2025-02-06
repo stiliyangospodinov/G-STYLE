@@ -4,7 +4,7 @@ export default function PageBanner ({pageName}) {
         <img
             className="pageBanner"
             src="themes/images/pageBanner.png"
-            alt="New products"
+            alt=""
         />
         <h4>
             <span>{pageName}</span>
