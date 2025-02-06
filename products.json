@@ -1,0 +1,12 @@
+[
+    { "id": "1", "name": "Nike Running Shoes", "description": "Comfortable and lightweight for runners.", "price": 120.00, "category": "Shoes", "brand": "Nike", "photoURL": "themes/images/woman/2.jpg" },
+    { "id": "3", "name": "Venum Boxing Gloves", "description": "High-quality gloves for training.", "price": 50.00, "category": "Boxing", "brand": "Venum", "photoURL": "themes/images/boxing/1.jpg" },
+    { "id": "4", "name": "Puma Gym Bag", "description": "Spacious and durable for carrying gear.", "price": 50.00, "category": "Accessories", "brand": "Puma", "photoURL": "themes/images/fitness/5.jpg" },
+    { "id": "5", "name": "Under Armour Leggings", "description": "Stretchable and comfortable for workouts.", "price": 40.00, "category": "Clothing", "brand": "Under Armour", "photoURL": "themes/images/fitness/6.jpg" },
+    { "id": "7", "name": "Everlast Heavy Bag", "description": "Perfect for boxing and kickboxing training.", "price": 140.00, "category": "Boxing", "brand": "Everlast", "photoURL": "themes/images/boxing/2.jpg" },
+    { "id": "8", "name": "Ringside Speed Rope", "description": "Great for cardio and agility training.", "price": 15.00, "category": "Accessories", "brand": "Ringside", "photoURL": "themes/images/fitness/9.jpg" },
+    { "id": "10", "name": "Everlast Reflex Bag", "description": "Improve reflexes and hand-eye coordination.", "price": 95.00, "category": "Boxing", "brand": "Everlast", "photoURL": "themes/images/boxing/3.jpg" },
+    { "id": "12", "name": "Puma Sweatband", "description": "Keeps sweat away during intense workouts.", "price": 8.00, "category": "Accessories", "brand": "Puma", "photoURL": "themes/images/fitness/14.jpg" },
+    { "id": "19", "name": "Nike Backpack", "description": "Perfect for gym or school.", "price": 50.00, "category": "Accessories", "brand": "Nike", "photoURL": "themes/images/fitness/11.jpg" }
+  ]
+  
