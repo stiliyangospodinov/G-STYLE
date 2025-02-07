@@ -5,17 +5,30 @@ import PageBanner from "../Shared/PageBanner";
 import useGroupProducts from "../../hooks/useGroupProducts";
 import ProductCarousel from "../Shared/ProductCarousel";
 import RandomizeProducts from "../Shared/RandomizeProducts";
-import useRandomProducts from "../../hooks/useRandomProucts";
 import BestProducts from "../Shared/BestProducts";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/cartSlice";
 
 export default function ProductDetails() {
   const { name } = useParams();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchProduct();
   }, [name]);
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({
+      id: product.id,
+      name: product.name,
+      photoURL: product.photoURL,
+      price: product.price,
+      quantity: parseInt(quantity),
+    }));
+  };
 
   const fetchProduct = async () => {
     try {
@@ -41,7 +54,6 @@ export default function ProductDetails() {
     }
   };
   const groupedRelatedProducts = useGroupProducts(relatedProducts, 3);
-  const randomProducts = useRandomProducts(relatedProducts, 3);
   if (!product) return <p>Loading...</p>;
 
     return (
@@ -131,8 +143,13 @@ export default function ProductDetails() {
               </label>
               <p>&nbsp;</p>
               <label>Quantity: </label>
-              <input type="text" className="span1" placeholder={1} />
-              <button className="btn btn-inverse" type="submit">
+              <input 
+                  type="number" 
+                  value={quantity} 
+                  min="1"
+                  onChange={(e) => setQuantity(e.target.value)} 
+              />
+              <button className="btn btn-inverse" onClick={handleAddToCart}>
                 Add to cart
               </button>
             </form>
@@ -175,7 +192,7 @@ export default function ProductDetails() {
         </div>
       </div>
       <div className="span3 col">
-            <RandomizeProducts randomProducts={randomProducts} />
+            <RandomizeProducts/>
             <BestProducts/>
       </div>
     </div>

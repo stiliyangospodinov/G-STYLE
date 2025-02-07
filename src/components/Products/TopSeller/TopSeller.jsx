@@ -5,7 +5,6 @@ import ProductCard from "../../Cards/ProductCard/ProductCard";
 import RandomizeProducts from "../../Shared/RandomizeProducts";
 import Pagination from "../../Shared/Pagination";
 import usePagination from "../../../hooks/usePagination";
-import useRandomProducts from "../../../hooks/useRandomProucts";
 
 export default function TopSeller(){
   const [products, setProducts] = useState([]);
@@ -24,8 +23,6 @@ export default function TopSeller(){
   };
 
  const { currentPage, totalPages, paginatedItems, handlePageChange } = usePagination(products, 9);
- const randomProducts = useRandomProducts(products, 3);
- 
   return (
     <div id="wrapper" className="container">
       <PageBanner pageName="Top products" />
@@ -51,7 +48,7 @@ export default function TopSeller(){
             />
           </div>
           <div className="span3 col">
-              <RandomizeProducts randomProducts={randomProducts} />
+              <RandomizeProducts />
           </div>
         </div>
       </section>

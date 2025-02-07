@@ -11,7 +11,7 @@ import RandomizeProducts from "./RandomizeProducts";
 export default function ProductPageLayout({ pageTitle, fetchFunction }) {
   const { 
     products, filteredProducts, setFilteredProducts, 
-    categories, brands, randomProducts, activeFilter, 
+    categories, brands, activeFilter, 
     handleCategoryFilter, handleBrandFilter, handleResetFilter 
   } = useProducts(fetchFunction);
 
@@ -46,7 +46,7 @@ export default function ProductPageLayout({ pageTitle, fetchFunction }) {
               handleBrandFilter={handleBrandFilter}
               handleResetFilter={handleResetFilter}
             />
-            <RandomizeProducts randomProducts={randomProducts} />
+            <RandomizeProducts index={3} />
             <BestProducts/>
           </div>
         </div>

@@ -5,7 +5,6 @@ export default function useProducts(fetchFunction) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
-  const [randomProducts, setRandomProducts] = useState([]);
   const [activeFilter, setActiveFilter] = useState({ category: null, brand: null });
 
   useEffect(() => {
@@ -24,8 +23,6 @@ export default function useProducts(fetchFunction) {
       setCategories(uniqueCategories);
       setBrands(uniqueBrands);
 
-      const shuffledProducts = [...data].sort(() => 0.5 - Math.random()).slice(0, 3);
-      setRandomProducts(shuffledProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -52,7 +49,6 @@ export default function useProducts(fetchFunction) {
     setFilteredProducts,
     categories,
     brands,
-    randomProducts,
     activeFilter,
     handleCategoryFilter,
     handleBrandFilter,
