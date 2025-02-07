@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../store/userSlice";
+import { clearCart } from "../../store/cartSlice";
 
 export default function Header() {
 
@@ -10,6 +11,7 @@ export default function Header() {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(clearCart());
   };
 
     return ( 

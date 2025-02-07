@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopOrBestSellers } from "../../service/service";
-import useRandomProducts from "../../hooks/useRandomProucts";
+import useRandomProducts from "../../hooks/useRandomProducts";
 import { Link } from "react-router-dom";
 
 export default function BestProducts() {

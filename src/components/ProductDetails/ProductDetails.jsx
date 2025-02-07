@@ -20,7 +20,8 @@ export default function ProductDetails() {
     fetchProduct();
   }, [name]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     dispatch(addToCart({
       id: product.id,
       name: product.name,
@@ -28,6 +29,8 @@ export default function ProductDetails() {
       price: product.price,
       quantity: parseInt(quantity),
     }));
+    alert("Product added successfully")
+    setQuantity(1)
   };
 
   const fetchProduct = async () => {
