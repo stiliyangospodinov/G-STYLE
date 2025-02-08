@@ -94,7 +94,9 @@ export default function Cart() {
                                         Clear Cart
                                     </button>
                                     <button className="btn btn-inverse" type="submit" id="checkout">
+                                        <Link to="/checkout">
                                         Checkout
+                                        </Link>
                                     </button>
                                 </p>
                             </>
