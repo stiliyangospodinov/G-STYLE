@@ -13,6 +13,7 @@ import Boxing from "./components/Products/Boxing/Boxing";
 import BestSeller from "./components/Products/BestSellers/BestSeller";
 import TopSeller from "./components/Products/TopSeller/TopSeller";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import AuthGuard from "./guards/AuthGuard";
 
 function App() {
   return (
@@ -21,10 +22,14 @@ function App() {
     <Header/>
     <Routes>
     <Route path="/" element={<Home />} />
+    <Route element={<GuestGuard />}>
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    </Route>
     <Route path="/cart" element={<Cart />} />
+    <Route element={<AuthGuard />}>
     <Route path="/checkout" element={<Checkout />} />
+    </Route>
     <Route path="/woman" element={<Woman />} />
     <Route path="/man" element={<Man />} />
     <Route path="/fitness" element={<Fitness />} />
