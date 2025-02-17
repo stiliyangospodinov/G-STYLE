@@ -43,18 +43,18 @@ export default function Header() {
           ) : (
             <>
             <li>
-              <Link to="/cart">Your Cart</Link>
-            </li>
-            <li>
               <Link to="/checkout">Checkout</Link>
             </li>
             <li>
               <a href="#">My Account</a>
             </li>
             <li>{username}'s Profile</li>
-            <li><a onClick={handleLogout}>Logout</a></li>
+            <li><a style={{cursor:"pointer"}} onClick={handleLogout}>Logout</a></li>
           </>
           )}
+            <li>
+              <Link to="/cart">Your Cart</Link>
+            </li>
         </ul>
       </div>
     </div>

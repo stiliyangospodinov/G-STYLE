@@ -1,14 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PageBanner from "../Shared/PageBanner";
 import { useState } from "react";
 import LoginForm from "../Shared/LoginForm";
 import { useNavigate } from "react-router-dom";
+import { clearCart } from "../../store/cartSlice";
 
 export default function Checkout() {
   const { username, isLoggedIn } = useSelector((state) => state.user);
   const [checkoutType, setCheckoutType] = useState(isLoggedIn ? "profile" : "guest");
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleContinue = () => {
     if (checkoutType === "profile" && !isLoggedIn) {
@@ -24,6 +26,7 @@ export default function Checkout() {
   const handleConfirm = () => {
     alert('The Order was successfully confirmed')
     navigate('/');
+    dispatch(clearCart());
   }
 
   return (
@@ -150,7 +153,7 @@ export default function Checkout() {
                       <button className="btn" onClick={handleBack}>
                         Back
                       </button>
-                      <button className="btn btn-inverse">Confirm Order</button>
+                      <button className="btn btn-inverse" onClick={handleConfirm}>Confirm Order</button>
                     </div>
                   </div>
                 </div>
