@@ -14,6 +14,7 @@ import BestSeller from "./components/Products/BestSellers/BestSeller";
 import TopSeller from "./components/Products/TopSeller/TopSeller";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import AuthGuard from "./guards/AuthGuard";
+import GuestGuard from "./guards/GuestGuard";
 
 function App() {
   return (
