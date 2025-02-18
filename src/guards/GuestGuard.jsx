@@ -1,11 +1,10 @@
-import { useContext } from "react"
 import { Navigate, Outlet } from "react-router-dom";
-import AuthContext from "../contexts/authContext";
+import { useSelector } from "react-redux";
 
 export default function GuestGuard(props) {
-    const { isAuthenticated } = useContext(AuthContext);
+    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
-    if (isAuthenticated) {
+    if (isLoggedIn) {
         return <Navigate to="/" />;
     }
 
