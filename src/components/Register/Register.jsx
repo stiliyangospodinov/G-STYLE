@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/userSlice";
 import validateForm from "../../validations/registerValidations";
+import { clearCart } from "../../store/cartSlice";
 
 export default function Register() {
   const [errors, setErrors] = useState({});
@@ -29,6 +30,7 @@ export default function Register() {
       await saveUserData(newUser.uid, username, email);
 
       dispatch(login({ username, email }));
+      dispatch(clearCart());
 
       setErrors({});
       setValues(initialValues);

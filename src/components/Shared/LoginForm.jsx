@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/userSlice";
 import validateForm from "../../validations/loginValidations";
+import { clearCart } from "../../store/cartSlice";
 export default function LoginForm ({navigateTo}) {
     const [errors, setErrors] = useState("");
 
@@ -26,6 +27,7 @@ export default function LoginForm ({navigateTo}) {
         const userData = await getUserData(loggedInUser.uid);
         console.log("User logged in: ",loggedInUser);
         dispatch(login({ username: userData.username, email }));
+        dispatch(clearCart());
         setErrors({});
         setValues(initialValues);
         alert("Login successful")
