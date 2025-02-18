@@ -90,6 +90,3 @@ npm start
 🚀 Live Demo: [Coming Soon]
 """
 
-
-
->>>>>>> f35d029c055458f9cc64e90c62c23e8aae824bb8
