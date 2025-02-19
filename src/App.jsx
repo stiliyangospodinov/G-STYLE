@@ -15,6 +15,7 @@ import TopSeller from "./components/Products/TopSeller/TopSeller";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import AuthGuard from "./guards/AuthGuard";
 import GuestGuard from "./guards/GuestGuard";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
     <Route path="/best-seller" element={<BestSeller />} />
     <Route path="/top-seller" element={<TopSeller />} />
     <Route path="/product/:name" element={<ProductDetails />} />
+    <Route path="/contact" element={<Contact />} />
     </Routes>
     <Footer/>
     </>
