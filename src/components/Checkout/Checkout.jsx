@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import PageBanner from "../Shared/PageBanner";
 import { useState } from "react";
 import LoginForm from "../Shared/LoginForm";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../store/cartSlice";
+import ProfileBox from "../Shared/ProfileBox";
 
 export default function Checkout() {
   const { username, isLoggedIn } = useSelector((state) => state.user);
@@ -149,21 +150,32 @@ export default function Checkout() {
 
               {/* Step 2: Confirm Order (Logged-in Users) */}
               {!isCartEmpty && step === 2 && checkoutType === "profile" && isLoggedIn && (
-                <div className="accordion-group">
-                  <div className="accordion-heading">
-                    <a className="accordion-toggle">Confirm Order</a>
-                  </div>
-                  <div className="accordion-body in collapse">
-                    <div className="accordion-inner">
-                      <button className="btn" onClick={handleBack}>
-                        Back
-                      </button>
-                      <button className="btn btn-inverse" onClick={handleConfirm} disabled={isCartEmpty}>
-                        Confirm Order
-                      </button>
-                    </div>
-                  </div>
-                </div>
+  <div className="accordion-group">
+  <div className="accordion-heading">
+    <a className="accordion-toggle">
+      Confirm Order
+    </a>
+  </div>
+  <div className="accordion-body in collapse">
+    <div className="accordion-inner">
+      <h4>Review Your Order</h4>
+      <p>All details are correct. Click "Confirm Order" to finish.</p>
+
+      {/* 🔥 Показваме профилната информация преди потвърждаването */}
+      <ProfileBox allowEdit={false} />
+
+      <button className="btn" onClick={handleBack}  style={{marginRight:"5px"}}>
+        Back
+      </button>
+      <button className="btn"  style={{marginRight:"5px"}}> 
+        <Link to="/profile">Edit</Link>
+      </button>
+      <button onClick={handleConfirm} className="btn btn-inverse">
+        Confirm Order
+      </button>
+    </div>
+  </div>
+</div>
               )}
 
               {/* Step 3: Final Confirmation */}
@@ -176,7 +188,7 @@ export default function Checkout() {
                     <div className="accordion-inner">
                       <h4>Review Your Order</h4>
                       <p>All details are correct. Click "Confirm Order" to finish.</p>
-                      <button className="btn" onClick={handleBack}>
+                      <button className="btn" onClick={handleBack}  style={{marginRight:"5px"}}>
                         Back
                       </button>
                       <button onClick={handleConfirm} className="btn btn-inverse" disabled={isCartEmpty}>
