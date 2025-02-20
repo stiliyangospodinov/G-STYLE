@@ -87,6 +87,6 @@ npm start
 
 👨‍💻 Създаден от: [Stiliyan Gospodinov]
 🔗 GitHub: github.com/stiliyangospodinov
-🚀 Live Demo: [Coming Soon]
+🚀 Live Demo: [https://g-style-tawny.vercel.app]
 """
 

@@ -30,7 +30,7 @@ export default function Footer () {
       <h4>My Account</h4>
       <ul className="nav">
         <li>
-          <a href="#">My Account</a>
+          <Link to="/profile">My Account</Link>
         </li>
         <li>
           <a href="#">Order History</a>
