@@ -10,19 +10,19 @@ export default function Footer () {
       <h4>Navigation</h4>
       <ul className="nav">
         <li>
-          <a href="./index.html">Homepage</a>
+          <Link to="/">Homepage</Link>
         </li>
         <li>
-          <a href="./about.html">About Us</a>
+          <Link to="/about">About Us</Link>
         </li>
         <li>
           <Link to="/contact">Contac Us</Link>
         </li>
         <li>
-          <a href="./cart.html">Your Cart</a>
+          <Link to="/cart">Your Cart</Link>
         </li>
         <li>
-          <a href="./register.html">Login</a>
+          <Link to="/login">Login</Link>
         </li>
       </ul>
     </div>
@@ -45,7 +45,7 @@ export default function Footer () {
     </div>
     <div className="span5">
       <p className="logo">
-        <img src="themes/images/logo.png" className="site_logo" alt="" />
+        <img src="/images/G_STYLE.png" className="site_logo" alt="" />
       </p>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -54,13 +54,13 @@ export default function Footer () {
       </p>
       <br />
       <span className="social_icons">
-        <a className="facebook" href="#">
+        <a className="facebook" href="www.facebook.com">
           Facebook
         </a>
-        <a className="twitter" href="#">
+        <a className="twitter" href="www.twitter.com">
           Twitter
         </a>
-        <a className="skype" href="#">
+        <a className="skype" href="www.skype.com">
           Skype
         </a>
         <a className="vimeo" href="#">

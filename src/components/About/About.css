@@ -1,0 +1,107 @@
+/* Основни стилове */
+.about-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px;
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+
+/* Секция заглавие */
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.highlight {
+  color: #e63946;
+  font-weight: bold;
+}
+
+/* Оформление на секциите */
+.about-section {
+  background-color: #f8f8f8;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about-content p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Грид за колони */
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.col-md-6 {
+  width: 68%;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.col-md-12 {
+  width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Иконки и заглавия */
+.icon {
+  color: #e63946;
+  margin-right: 10px;
+}
+
+h3 {
+  font-size: 22px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+
+
+/* Социални икони */
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icon {
+  font-size: 24px;
+  margin: 0 10px;
+  color: #e63946;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: #222;
+}
+
+/* Финален надпис */
+.text-center {
+  text-align: center;
+}
+
+.text-center p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}

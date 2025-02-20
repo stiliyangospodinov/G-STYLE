@@ -48,7 +48,9 @@ export default function Header() {
             <li>
               <a href="#">My Account</a>
             </li>
-            <li>{username}'s Profile</li>
+            <li>
+              <Link to="/profile">{username}'s Profile</Link>
+              </li>
             <li><a style={{cursor:"pointer"}} onClick={handleLogout}>Logout</a></li>
           </>
           )}
@@ -87,17 +89,6 @@ export default function Header() {
         </li>
         <li>
           <Link to="/fitness">Fitness</Link>
-          <ul>
-            <li>
-              <a href="./products.html">Gifts and Tech</a>
-            </li>
-            <li>
-              <a href="./products.html">Ties and Hats</a>
-            </li>
-            <li>
-              <a href="./products.html">Cold Weather</a>
-            </li>
-          </ul>
         </li>
         <li>
           <Link to="/boxing">Boxing</Link>

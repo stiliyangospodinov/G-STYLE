@@ -16,6 +16,8 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import AuthGuard from "./guards/AuthGuard";
 import GuestGuard from "./guards/GuestGuard";
 import Contact from "./components/Contact/Contact";
+import About from "./components/About/About";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -30,8 +32,9 @@ function App() {
     </Route>
     <Route path="/cart" element={<Cart />} />
     <Route element={<AuthGuard />}>
-    <Route path="/checkout" element={<Checkout />} />
+    <Route path="/profile" element={<ProfilePage />} />
     </Route>
+    <Route path="/checkout" element={<Checkout />} />
     <Route path="/woman" element={<Woman />} />
     <Route path="/man" element={<Man />} />
     <Route path="/fitness" element={<Fitness />} />
@@ -40,6 +43,7 @@ function App() {
     <Route path="/top-seller" element={<TopSeller />} />
     <Route path="/product/:name" element={<ProductDetails />} />
     <Route path="/contact" element={<Contact />} />
+    <Route path="/about" element={<About />} />
     </Routes>
     <Footer/>
     </>

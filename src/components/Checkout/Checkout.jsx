@@ -7,14 +7,18 @@ import { clearCart } from "../../store/cartSlice";
 
 export default function Checkout() {
   const { username, isLoggedIn } = useSelector((state) => state.user);
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const [checkoutType, setCheckoutType] = useState(isLoggedIn ? "profile" : "guest");
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const isCartEmpty = cartItems.length === 0;
+
   const handleContinue = () => {
+    if (isCartEmpty) return;
     if (checkoutType === "profile" && !isLoggedIn) {
-      return; 
+      return;
     }
     setStep((prev) => prev + 1);
   };
@@ -24,10 +28,11 @@ export default function Checkout() {
   };
 
   const handleConfirm = () => {
-    alert('The Order was successfully confirmed')
-    navigate('/');
+    if (isCartEmpty) return;
+    alert("The order was successfully confirmed!");
+    navigate("/");
     dispatch(clearCart());
-  }
+  };
 
   return (
     <div id="wrapper" className="container">
@@ -37,22 +42,25 @@ export default function Checkout() {
           <div className="span12">
             <div className="accordion" id="accordion2">
 
-              {/* Стъпка 1: Checkout Options */}
-              {step === 1 && (
+              {/* 🛑 Show warning if cart is empty */}
+              {isCartEmpty && (
+                <div className="alert alert-warning text-center">
+                  <strong>Your cart is empty.</strong> You cannot proceed with the checkout.
+                </div>
+              )}
+
+              {/* Step 1: Checkout Options */}
+              {!isCartEmpty && step === 1 && (
                 <div className="accordion-group">
                   <div className="accordion-heading">
-                    <a className="accordion-toggle">
-                      Checkout Options
-                    </a>
+                    <a className="accordion-toggle">Checkout Options</a>
                   </div>
                   <div className="accordion-body in collapse">
                     <div className="accordion-inner">
                       <div className="row-fluid">
                         <div className="span6">
                           <h4>New Customer</h4>
-                          <p>
-                            By creating an account you will be able to shop faster and track orders.
-                          </p>
+                          <p>By creating an account, you will be able to shop faster and track orders.</p>
                           <label>
                             <input
                               type="radio"
@@ -75,7 +83,7 @@ export default function Checkout() {
                             Checkout as Guest
                           </label>
                           <br />
-                          <button className="btn btn-inverse" onClick={handleContinue}>
+                          <button className="btn btn-inverse" onClick={handleContinue} disabled={isCartEmpty}>
                             Continue
                           </button>
                         </div>
@@ -86,19 +94,17 @@ export default function Checkout() {
                             <LoginForm navigateTo={"/checkout"} />
                           </div>
                         )}
-
                       </div>
                     </div>
                   </div>
                 </div>
               )}
 
-              {step === 2 && checkoutType === "guest" && (
+              {/* Step 2: Account & Billing Details (Guest Checkout) */}
+              {!isCartEmpty && step === 2 && checkoutType === "guest" && (
                 <div className="accordion-group">
                   <div className="accordion-heading">
-                    <a className="accordion-toggle">
-                      Account & Billing Details
-                    </a>
+                    <a className="accordion-toggle">Account & Billing Details</a>
                   </div>
                   <div className="accordion-body in collapse">
                     <div className="accordion-inner">
@@ -141,31 +147,30 @@ export default function Checkout() {
                 </div>
               )}
 
-              {step === 2 && checkoutType === "profile" && isLoggedIn && (
+              {/* Step 2: Confirm Order (Logged-in Users) */}
+              {!isCartEmpty && step === 2 && checkoutType === "profile" && isLoggedIn && (
                 <div className="accordion-group">
                   <div className="accordion-heading">
-                    <a className="accordion-toggle">
-                      Confirm Order
-                    </a>
+                    <a className="accordion-toggle">Confirm Order</a>
                   </div>
                   <div className="accordion-body in collapse">
                     <div className="accordion-inner">
                       <button className="btn" onClick={handleBack}>
                         Back
                       </button>
-                      <button className="btn btn-inverse" onClick={handleConfirm}>Confirm Order</button>
+                      <button className="btn btn-inverse" onClick={handleConfirm} disabled={isCartEmpty}>
+                        Confirm Order
+                      </button>
                     </div>
                   </div>
                 </div>
               )}
 
-
-              {step === 3 && (
+              {/* Step 3: Final Confirmation */}
+              {!isCartEmpty && step === 3 && (
                 <div className="accordion-group">
                   <div className="accordion-heading">
-                    <a className="accordion-toggle">
-                      Confirm Order
-                    </a>
+                    <a className="accordion-toggle">Confirm Order</a>
                   </div>
                   <div className="accordion-body in collapse">
                     <div className="accordion-inner">
@@ -174,7 +179,9 @@ export default function Checkout() {
                       <button className="btn" onClick={handleBack}>
                         Back
                       </button>
-                      <button onClick={handleConfirm} className="btn btn-inverse">Confirm Order</button>
+                      <button onClick={handleConfirm} className="btn btn-inverse" disabled={isCartEmpty}>
+                        Confirm Order
+                      </button>
                     </div>
                   </div>
                 </div>
