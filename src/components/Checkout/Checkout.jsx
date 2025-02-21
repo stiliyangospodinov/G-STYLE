@@ -5,6 +5,8 @@ import LoginForm from "../Shared/LoginForm";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../store/cartSlice";
 import ProfileBox from "../Shared/ProfileBox";
+import SuccessModal from "../Shared/Modals/SuccessModal";
+import ConfirmationModal from "../Shared/Modals/ConfirmationModal";
 
 export default function Checkout() {
   const { username, isLoggedIn } = useSelector((state) => state.user);
@@ -13,6 +15,9 @@ export default function Checkout() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [isConfirmModalOpen, setConfirmModalOpen] = useState(false);
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
 
   const isCartEmpty = cartItems.length === 0;
 
@@ -28,9 +33,13 @@ export default function Checkout() {
     setStep((prev) => prev - 1);
   };
 
-  const handleConfirm = () => {
-    if (isCartEmpty) return;
-    alert("The order was successfully confirmed!");
+  const handleConfirmOrder = () => {
+    setConfirmModalOpen(false);
+    setSuccessModalOpen(true);
+  };
+
+  const handleSuccessClose = () => {
+    setSuccessModalOpen(false);
     navigate("/");
     dispatch(clearCart());
   };
@@ -150,32 +159,32 @@ export default function Checkout() {
 
               {/* Step 2: Confirm Order (Logged-in Users) */}
               {!isCartEmpty && step === 2 && checkoutType === "profile" && isLoggedIn && (
-  <div className="accordion-group">
-  <div className="accordion-heading">
-    <a className="accordion-toggle">
-      Confirm Order
-    </a>
-  </div>
-  <div className="accordion-body in collapse">
-    <div className="accordion-inner">
-      <h4>Review Your Order</h4>
-      <p>All details are correct. Click "Confirm Order" to finish.</p>
+                <div className="accordion-group">
+                  <div className="accordion-heading">
+                    <a className="accordion-toggle">
+                      Confirm Order
+                    </a>
+                  </div>
+                  <div className="accordion-body in collapse">
+                    <div className="accordion-inner">
+                      <h4>Review Your Order</h4>
+                      <p>All details are correct. Click "Confirm Order" to finish.</p>
 
-      {/* 🔥 Показваме профилната информация преди потвърждаването */}
-      <ProfileBox allowEdit={false} />
+                      {/* 🔥 Показваме профилната информация преди потвърждаването */}
+                      <ProfileBox allowEdit={false} />
 
-      <button className="btn" onClick={handleBack}  style={{marginRight:"5px"}}>
-        Back
-      </button>
-      <button className="btn"  style={{marginRight:"5px"}}> 
-        <Link to="/profile">Edit</Link>
-      </button>
-      <button onClick={handleConfirm} className="btn btn-inverse">
-        Confirm Order
-      </button>
-    </div>
-  </div>
-</div>
+                      <button className="btn" onClick={handleBack} style={{ marginRight: "5px" }}>
+                        Back
+                      </button>
+                      <button className="btn" style={{ marginRight: "5px" }}>
+                        <Link to="/profile">Edit</Link>
+                      </button>
+                      <button onClick={() => setConfirmModalOpen(true)} className="btn btn-inverse">
+                        Confirm Order
+                      </button>
+                    </div>
+                  </div>
+                </div>
               )}
 
               {/* Step 3: Final Confirmation */}
@@ -188,16 +197,23 @@ export default function Checkout() {
                     <div className="accordion-inner">
                       <h4>Review Your Order</h4>
                       <p>All details are correct. Click "Confirm Order" to finish.</p>
-                      <button className="btn" onClick={handleBack}  style={{marginRight:"5px"}}>
+                      <button className="btn" onClick={handleBack} style={{ marginRight: "5px" }}>
                         Back
                       </button>
-                      <button onClick={handleConfirm} className="btn btn-inverse" disabled={isCartEmpty}>
+                      <button onClick={() => setConfirmModalOpen(true)} className="btn btn-inverse" disabled={isCartEmpty}>
                         Confirm Order
                       </button>
                     </div>
                   </div>
                 </div>
               )}
+              <ConfirmationModal
+                isOpen={isConfirmModalOpen}
+                onClose={() => setConfirmModalOpen(false)}
+                onConfirm={handleConfirmOrder}
+              />
+
+              <SuccessModal isOpen={isSuccessModalOpen} onClose={handleSuccessClose} text='Your order has been successfully placed!' title='Order Successful!'/>
 
             </div>
           </div>

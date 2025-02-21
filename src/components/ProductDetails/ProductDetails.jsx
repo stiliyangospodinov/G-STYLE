@@ -8,6 +8,7 @@ import RandomizeProducts from "../Shared/RandomizeProducts";
 import BestProducts from "../Shared/BestProducts";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
+import SuccessModal from "../Shared/Modals/SuccessModal";
 
 export default function ProductDetails() {
   const { name } = useParams();
@@ -15,6 +16,8 @@ export default function ProductDetails() {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
 
   useEffect(() => {
     fetchProduct();
@@ -29,7 +32,7 @@ export default function ProductDetails() {
       price: product.price,
       quantity: parseInt(quantity),
     }));
-    alert("Product added successfully")
+    setSuccessModalOpen(true)
     setQuantity(1)
   };
 
@@ -56,6 +59,10 @@ export default function ProductDetails() {
       console.error("Error fetching product:", error);
     }
   };
+
+  const handleSuccessClose = () => {
+    setSuccessModalOpen(false);
+  }
   const groupedRelatedProducts = useGroupProducts(relatedProducts, 3);
   if (!product) return <p>Loading...</p>;
 
@@ -155,6 +162,7 @@ export default function ProductDetails() {
               <button className="btn btn-inverse" onClick={handleAddToCart}>
                 Add to cart
               </button>
+              <SuccessModal isOpen={isSuccessModalOpen} onClose={handleSuccessClose} text='Product added successfully!' title="Add to cart" />
             </form>
           </div>
         </div>
@@ -203,4 +211,5 @@ export default function ProductDetails() {
 </div>
 
     )
+    
 }
