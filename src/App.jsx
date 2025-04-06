@@ -18,6 +18,7 @@ import GuestGuard from "./guards/GuestGuard";
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import NotFound from "./components/404/NotFound";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
     <Route path="/product/:name" element={<ProductDetails />} />
     <Route path="/contact" element={<Contact />} />
     <Route path="/about" element={<About />} />
+    <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer/>
     </>
