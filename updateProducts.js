@@ -10,8 +10,8 @@ const updateProductsWithSales = async () => {
     // Обходи всеки продукт
     productsSnapshot.forEach(async (productDoc) => {
       const productRef = doc(db, "boxing", productDoc.id); // Референция към документа
-      const randomSales = Math.floor(Math.random() * 101); // Произволна стойност от 0 до 100
-      await updateDoc(productRef, { sales: randomSales }); // Добавяне/обновяване на полето `sales`
+      const randomSales = Math.floor(Math.random() * 11); // Произволна стойност от 0 до 100
+      await updateDoc(productRef, { points: randomSales }); // Добавяне/обновяване на полето `sales`
       console.log(`Updated product ${productDoc.id} with sales: ${randomSales}`);
     });
 
